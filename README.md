@@ -1,11 +1,20 @@
-# DisplayMosaic
+<p align="center">
+  <img src=".github/app-icon.png" width="128" height="128" alt="DisplayMosaic Icon">
+</p>
 
-[![GitHub stars](https://img.shields.io/github/stars/mizou-co-jp/display-mosaic?style=social)](https://github.com/mizou-co-jp/display-mosaic/stargazers)
-[![GitHub downloads](https://img.shields.io/github/downloads/mizou-co-jp/display-mosaic/total)](https://github.com/mizou-co-jp/display-mosaic/releases)
-[![GitHub release](https://img.shields.io/github/v/release/mizou-co-jp/display-mosaic)](https://github.com/mizou-co-jp/display-mosaic/releases/latest)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+<h1 align="center">DisplayMosaic</h1>
 
-A macOS menu bar app that applies mosaic effects to your entire display. Useful for privacy protection during screen sharing or when stepping away from your desk.
+<p align="center">
+  <a href="https://github.com/mizou-co-jp/display-mosaic/stargazers"><img src="https://img.shields.io/github/stars/mizou-co-jp/display-mosaic?style=social" alt="GitHub stars"></a>
+  <a href="https://github.com/mizou-co-jp/display-mosaic/releases"><img src="https://img.shields.io/github/downloads/mizou-co-jp/display-mosaic/total" alt="GitHub downloads"></a>
+  <a href="https://github.com/mizou-co-jp/display-mosaic/releases/latest"><img src="https://img.shields.io/github/v/release/mizou-co-jp/display-mosaic" alt="GitHub release"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+</p>
+
+<p align="center">
+  A macOS menu bar app that applies mosaic effects to your entire display.<br>
+  Useful for privacy protection during screen sharing or when stepping away from your desk.
+</p>
 
 ## Features
 
