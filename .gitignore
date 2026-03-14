@@ -16,3 +16,11 @@ DisplayMosaic_debug.log
 
 # Source images
 grok-image-*.png
+
+# Certificates and keys
+*.cer
+*.p8
+*.p12
+*.key
+*.certSigningRequest
+.playwright-mcp/
