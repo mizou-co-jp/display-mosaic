@@ -17,7 +17,20 @@
 		A10000080000000000000008 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20000080000000000000008; };
 		A1000000000000000000000A /* ScreenRecordingPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000C; };
 		A1000000000000000000000B /* IdleMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000D; };
+		A1000000000000000000000C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000E; };
 /* End PBXBuildFile section */
+
+/* Begin PBXVariantGroup section */
+		A2000000000000000000000E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A2000000000000000000000F /* en */,
+				A20000000000000000000010 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin PBXFileReference section */
 		A20000010000000000000001 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -32,6 +45,8 @@
 		A2000000000000000000000A /* DisplayMosaic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DisplayMosaic.entitlements; sourceTree = "<group>"; };
 		A2000000000000000000000C /* ScreenRecordingPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenRecordingPermission.swift; sourceTree = "<group>"; };
 		A2000000000000000000000D /* IdleMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdleMonitor.swift; sourceTree = "<group>"; };
+		A2000000000000000000000F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A20000000000000000000010 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A30000000000000000000001 /* DisplayMosaic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DisplayMosaic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -69,6 +84,7 @@
 				A2000000000000000000000A /* DisplayMosaic.entitlements */,
 				A2000000000000000000000C /* ScreenRecordingPermission.swift */,
 				A2000000000000000000000D /* IdleMonitor.swift */,
+				A2000000000000000000000E /* Localizable.strings */,
 			);
 			path = DisplayMosaic;
 			sourceTree = "<group>";
@@ -118,9 +134,10 @@
 			};
 			buildConfigurationList = A80000000000000000000001 /* Build configuration list for PBXProject "DisplayMosaic" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = ja;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				en,
 				ja,
 				Base,
 			);
@@ -140,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A10000080000000000000008 /* Assets.xcassets in Resources */,
+				A1000000000000000000000C /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +251,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.mizou.DisplayMosaic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -256,7 +274,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.mizou.DisplayMosaic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

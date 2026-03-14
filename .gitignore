@@ -16,6 +16,7 @@ DisplayMosaic_debug.log
 
 # Source images
 grok-image-*.png
+スクリーンショット*.png
 
 # Environment files
 .env*

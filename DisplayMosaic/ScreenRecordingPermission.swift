@@ -3,16 +3,15 @@ import CoreGraphics
 
 enum ScreenRecordingPermission {
 
-    /// 画面収録の権限がなければシステム設定を開くよう促す
     static func requestIfNeeded() {
         guard !hasPermission() else { return }
 
         let alert = NSAlert()
-        alert.messageText = "画面収録の許可が必要です"
-        alert.informativeText = "DisplayMosaic は画面にモザイクをかけるために画面収録の許可が必要です。\n\n「システム設定 → プライバシーとセキュリティ → 画面収録」から DisplayMosaic を許可してください。"
+        alert.messageText = NSLocalizedString("screen_recording_required", comment: "")
+        alert.informativeText = NSLocalizedString("screen_recording_description", comment: "")
         alert.alertStyle = .warning
-        alert.addButton(withTitle: "システム設定を開く")
-        alert.addButton(withTitle: "後で")
+        alert.addButton(withTitle: NSLocalizedString("open_system_settings", comment: ""))
+        alert.addButton(withTitle: NSLocalizedString("later", comment: ""))
 
         let response = alert.runModal()
         if response == .alertFirstButtonReturn {
@@ -20,7 +19,6 @@ enum ScreenRecordingPermission {
         }
     }
 
-    /// 画面収録の権限があるかチェック
     static func hasPermission() -> Bool {
         let testImage = CGDisplayCreateImage(CGMainDisplayID())
         return testImage != nil
