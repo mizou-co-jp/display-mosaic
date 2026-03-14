@@ -17,6 +17,9 @@ DisplayMosaic_debug.log
 # Source images
 grok-image-*.png
 
+# Environment files
+.env*
+
 # Certificates and keys
 *.cer
 *.p8
