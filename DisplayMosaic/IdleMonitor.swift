@@ -7,13 +7,14 @@ final class IdleMonitor {
 
     static let shared = IdleMonitor()
 
+    private static let checkInterval: TimeInterval = 10
+
     private var timer: Timer?
     private var cancellables = Set<AnyCancellable>()
 
     private init() {
         let settings = MosaicSettings.shared
 
-        // 設定変更を監視して自動的にタイマーを再構成
         settings.$autoMosaicEnabled
             .combineLatest(settings.$autoMosaicMinutes)
             .sink { [weak self] enabled, _ in
@@ -26,17 +27,14 @@ final class IdleMonitor {
             .store(in: &cancellables)
     }
 
-    /// アイドル監視を開始
     func startMonitoring() {
         stopMonitoring()
 
-        // 10秒ごとにアイドル時間をチェック
-        timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: Self.checkInterval, repeats: true) { [weak self] _ in
             self?.checkIdleTime()
         }
     }
 
-    /// アイドル監視を停止
     func stopMonitoring() {
         timer?.invalidate()
         timer = nil
