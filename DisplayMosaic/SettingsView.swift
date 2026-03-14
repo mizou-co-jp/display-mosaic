@@ -85,6 +85,28 @@ struct SettingsView: View {
 
             Divider()
 
+            // 自動モザイク
+            VStack(alignment: .leading, spacing: 8) {
+                Toggle("操作がないとき自動でモザイク", isOn: $settings.autoMosaicEnabled)
+                    .font(.subheadline)
+
+                if settings.autoMosaicEnabled {
+                    HStack {
+                        Text("\(Int(settings.autoMosaicMinutes))分")
+                            .font(.subheadline)
+                            .monospacedDigit()
+                            .foregroundColor(.secondary)
+                            .frame(width: 40, alignment: .trailing)
+                        Slider(value: $settings.autoMosaicMinutes, in: 1...30, step: 1)
+                    }
+                    Text("未操作のまま\(Int(settings.autoMosaicMinutes))分経過すると自動でモザイクがかかります")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+            }
+
+            Divider()
+
             // ログイン時に起動
             Toggle("ログイン時に自動起動", isOn: $launchAtLogin)
                 .font(.subheadline)

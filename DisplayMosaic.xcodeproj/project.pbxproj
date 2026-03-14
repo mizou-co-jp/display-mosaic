@@ -16,6 +16,7 @@
 		A10000070000000000000007 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000070000000000000007; };
 		A10000080000000000000008 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20000080000000000000008; };
 		A1000000000000000000000A /* ScreenRecordingPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000C; };
+		A1000000000000000000000B /* IdleMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000D; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		A20000090000000000000009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2000000000000000000000A /* DisplayMosaic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DisplayMosaic.entitlements; sourceTree = "<group>"; };
 		A2000000000000000000000C /* ScreenRecordingPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenRecordingPermission.swift; sourceTree = "<group>"; };
+		A2000000000000000000000D /* IdleMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdleMonitor.swift; sourceTree = "<group>"; };
 		A30000000000000000000001 /* DisplayMosaic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DisplayMosaic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -66,6 +68,7 @@
 				A20000090000000000000009 /* Info.plist */,
 				A2000000000000000000000A /* DisplayMosaic.entitlements */,
 				A2000000000000000000000C /* ScreenRecordingPermission.swift */,
+				A2000000000000000000000D /* IdleMonitor.swift */,
 			);
 			path = DisplayMosaic;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 				A10000060000000000000006 /* MosaicOverlayManager.swift in Sources */,
 				A10000070000000000000007 /* SettingsView.swift in Sources */,
 				A1000000000000000000000A /* ScreenRecordingPermission.swift in Sources */,
+				A1000000000000000000000B /* IdleMonitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,7 +233,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.mizou.DisplayMosaic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -252,7 +256,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.mizou.DisplayMosaic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -11,6 +11,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
         setupStatusItem()
         setupPopover()
         ScreenRecordingPermission.requestIfNeeded()
+
+        // 設定が有効なら自動モザイク監視を開始
+        if MosaicSettings.shared.autoMosaicEnabled {
+            IdleMonitor.shared.startMonitoring()
+        }
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {

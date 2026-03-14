@@ -21,10 +21,23 @@ final class MosaicSettings: ObservableObject {
         didSet { UserDefaults.standard.set(strength, forKey: "mosaicStrength") }
     }
 
+    /// 自動モザイクが有効かどうか
+    @Published var autoMosaicEnabled: Bool {
+        didSet { UserDefaults.standard.set(autoMosaicEnabled, forKey: "autoMosaicEnabled") }
+    }
+
+    /// 自動モザイクまでのアイドル時間（分）
+    @Published var autoMosaicMinutes: Double {
+        didSet { UserDefaults.standard.set(autoMosaicMinutes, forKey: "autoMosaicMinutes") }
+    }
+
     private init() {
         let savedType = UserDefaults.standard.string(forKey: "mosaicType") ?? MosaicType.pixellate.rawValue
         self.mosaicType = MosaicType(rawValue: savedType) ?? .pixellate
         let savedStrength = UserDefaults.standard.double(forKey: "mosaicStrength")
         self.strength = savedStrength > 0 ? savedStrength : 30
+        self.autoMosaicEnabled = UserDefaults.standard.bool(forKey: "autoMosaicEnabled")
+        let savedMinutes = UserDefaults.standard.double(forKey: "autoMosaicMinutes")
+        self.autoMosaicMinutes = savedMinutes > 0 ? savedMinutes : 5
     }
 }
