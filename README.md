@@ -45,7 +45,14 @@
 ### Homebrew
 
 ```bash
-brew install mizou-co-jp/tap/display-mosaic
+brew tap mizou-co-jp/tap
+brew install display-mosaic
+```
+
+To update to the latest version:
+
+```bash
+brew upgrade display-mosaic
 ```
 
 ### Manual
@@ -97,7 +104,14 @@ macOS のディスプレイ全体にモザイクをかけるメニューバー�
 ### インストール
 
 ```bash
-brew install mizou-co-jp/tap/display-mosaic
+brew tap mizou-co-jp/tap
+brew install display-mosaic
+```
+
+アップデート：
+
+```bash
+brew upgrade display-mosaic
 ```
 
 または [Releases](https://github.com/mizou-co-jp/display-mosaic/releases) から `.app.zip` をダウンロードしてください。
