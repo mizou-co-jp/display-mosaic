@@ -16,6 +16,12 @@
   Useful for privacy protection during screen sharing or when stepping away from your desk.
 </p>
 
+## Screenshots
+
+|Original|Pixellate|Blur|Crystallize|
+|:---:|:---:|:---:|:---:|
+|<img src=".github/screenshots/original.png" width="220">|<img src=".github/screenshots/pixellate.png" width="220">|<img src=".github/screenshots/blur.png" width="220">|<img src=".github/screenshots/crystallize.png" width="220">|
+
 ## Features
 
 - **Menu Bar Resident** — No dock icon, quick access from the menu bar
