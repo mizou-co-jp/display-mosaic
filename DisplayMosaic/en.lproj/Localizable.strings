@@ -1,0 +1,23 @@
+/* Settings View */
+"mosaic_type" = "Mosaic Type";
+"pixellate" = "Pixellate";
+"blur" = "Blur";
+"crystallize" = "Crystallize";
+"strength" = "Strength";
+"weak" = "Weak";
+"strong" = "Strong";
+"enable_mosaic" = "Enable Mosaic";
+"disable_mosaic" = "Disable Mosaic";
+"press_esc_to_dismiss" = "Press Esc to dismiss";
+"auto_mosaic" = "Auto Mosaic";
+"off" = "Off";
+"minutes_format" = "%d min";
+"auto_mosaic_description" = "Mosaic will activate after %d minutes of inactivity";
+"launch_at_login" = "Launch at Login";
+"quit" = "Quit";
+
+/* Screen Recording Permission */
+"screen_recording_required" = "Screen Recording Permission Required";
+"screen_recording_description" = "DisplayMosaic needs Screen Recording permission to apply mosaic effects to your display.\n\nPlease enable DisplayMosaic in System Settings → Privacy & Security → Screen Recording.";
+"open_system_settings" = "Open System Settings";
+"later" = "Later";

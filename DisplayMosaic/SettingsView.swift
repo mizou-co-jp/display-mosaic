@@ -10,9 +10,6 @@ struct SettingsView: View {
         VStack(alignment: .leading, spacing: 16) {
             // ヘッダー
             HStack {
-                Image(systemName: "eye.slash.fill")
-                    .font(.title2)
-                    .foregroundColor(.accentColor)
                 Text("Display Mosaic")
                     .font(.headline)
                 Spacer()
@@ -22,12 +19,12 @@ struct SettingsView: View {
 
             // モザイク種類
             VStack(alignment: .leading, spacing: 6) {
-                Text("モザイクの種類")
+                Text("mosaic_type")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 Picker("", selection: $settings.mosaicType) {
                     ForEach(MosaicType.allCases) { type in
-                        Text(type.rawValue).tag(type)
+                        Text(type.localizedName).tag(type)
                     }
                 }
                 .pickerStyle(.segmented)
@@ -37,7 +34,7 @@ struct SettingsView: View {
             // 強度スライダー
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
-                    Text("強度")
+                    Text("strength")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     Spacer()
@@ -47,11 +44,11 @@ struct SettingsView: View {
                         .foregroundColor(.secondary)
                 }
                 HStack {
-                    Text("弱")
+                    Text("weak")
                         .font(.caption)
                         .foregroundColor(.secondary)
                     Slider(value: $settings.strength, in: 1...100, step: 1)
-                    Text("強")
+                    Text("strong")
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -64,7 +61,7 @@ struct SettingsView: View {
                 HStack {
                     Spacer()
                     Image(systemName: isActive ? "eye.fill" : "eye.slash.fill")
-                    Text(isActive ? "モザイクを解除" : "モザイクを有効にする")
+                    Text(isActive ? "disable_mosaic" : "enable_mosaic")
                         .fontWeight(.medium)
                     Spacer()
                 }
@@ -76,7 +73,7 @@ struct SettingsView: View {
             if isActive {
                 HStack {
                     Spacer()
-                    Text("Escキーで解除できます")
+                    Text("press_esc_to_dismiss")
                         .font(.caption)
                         .foregroundColor(.secondary)
                     Spacer()
@@ -86,20 +83,31 @@ struct SettingsView: View {
             Divider()
 
             // 自動モザイク
-            VStack(alignment: .leading, spacing: 8) {
-                Toggle("操作がないとき自動でモザイク", isOn: $settings.autoMosaicEnabled)
-                    .font(.subheadline)
-
+            VStack(alignment: .leading, spacing: 6) {
+                HStack {
+                    Text("auto_mosaic")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    Spacer()
+                    Text(autoMosaicLabel)
+                        .font(.subheadline)
+                        .monospacedDigit()
+                        .foregroundColor(.secondary)
+                }
+                HStack {
+                    Text("off")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    Slider(value: $settings.autoMosaicMinutes, in: 0...30, step: 1)
+                        .onChange(of: settings.autoMosaicMinutes) { newValue in
+                            settings.autoMosaicEnabled = newValue > 0
+                        }
+                    Text("30\(NSLocalizedString("minutes_format", comment: "").replacingOccurrences(of: "%d", with: "").trimmingCharacters(in: .whitespaces))")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
                 if settings.autoMosaicEnabled {
-                    HStack {
-                        Text("\(Int(settings.autoMosaicMinutes))分")
-                            .font(.subheadline)
-                            .monospacedDigit()
-                            .foregroundColor(.secondary)
-                            .frame(width: 40, alignment: .trailing)
-                        Slider(value: $settings.autoMosaicMinutes, in: 1...30, step: 1)
-                    }
-                    Text("未操作のまま\(Int(settings.autoMosaicMinutes))分経過すると自動でモザイクがかかります")
+                    Text(String(format: NSLocalizedString("auto_mosaic_description", comment: ""), Int(settings.autoMosaicMinutes)))
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -108,7 +116,7 @@ struct SettingsView: View {
             Divider()
 
             // ログイン時に起動
-            Toggle("ログイン時に自動起動", isOn: $launchAtLogin)
+            Toggle(LocalizedStringKey("launch_at_login"), isOn: $launchAtLogin)
                 .font(.subheadline)
                 .onChange(of: launchAtLogin) { newValue in
                     do {
@@ -125,7 +133,7 @@ struct SettingsView: View {
             // 終了ボタン
             HStack {
                 Spacer()
-                Button("終了") {
+                Button("quit") {
                     NSApplication.shared.terminate(nil)
                 }
                 .buttonStyle(.plain)
@@ -141,6 +149,13 @@ struct SettingsView: View {
                 isActive = active
             }
         }
+    }
+
+    private var autoMosaicLabel: String {
+        if settings.autoMosaicMinutes == 0 {
+            return NSLocalizedString("off", comment: "")
+        }
+        return String(format: NSLocalizedString("minutes_format", comment: ""), Int(settings.autoMosaicMinutes))
     }
 
     private func toggleMosaic() {

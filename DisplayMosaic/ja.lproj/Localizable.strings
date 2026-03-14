@@ -1,0 +1,23 @@
+/* Settings View */
+"mosaic_type" = "モザイクの種類";
+"pixellate" = "ピクセレート";
+"blur" = "ぼかし";
+"crystallize" = "クリスタライズ";
+"strength" = "強度";
+"weak" = "弱";
+"strong" = "強";
+"enable_mosaic" = "モザイクを有効にする";
+"disable_mosaic" = "モザイクを解除";
+"press_esc_to_dismiss" = "Escキーで解除できます";
+"auto_mosaic" = "自動モザイク";
+"off" = "しない";
+"minutes_format" = "%d分";
+"auto_mosaic_description" = "未操作のまま%d分経過すると自動でモザイクがかかります";
+"launch_at_login" = "ログイン時に自動起動";
+"quit" = "終了";
+
+/* Screen Recording Permission */
+"screen_recording_required" = "画面収録の許可が必要です";
+"screen_recording_description" = "DisplayMosaic は画面にモザイクをかけるために画面収録の許可が必要です。\n\n「システム設定 → プライバシーとセキュリティ → 画面収録」から DisplayMosaic を許可してください。";
+"open_system_settings" = "システム設定を開く";
+"later" = "後で";

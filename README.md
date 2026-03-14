@@ -18,6 +18,10 @@
 
 ## Screenshots
 
+<p align="center">
+  <img src=".github/screenshots/menu.png" width="300" alt="Settings Menu">
+</p>
+
 |Original|Pixellate|Blur|Crystallize|
 |:---:|:---:|:---:|:---:|
 |<img src=".github/screenshots/original.png" width="220">|<img src=".github/screenshots/pixellate.png" width="220">|<img src=".github/screenshots/blur.png" width="220">|<img src=".github/screenshots/crystallize.png" width="220">|

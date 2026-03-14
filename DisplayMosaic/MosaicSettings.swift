@@ -2,11 +2,19 @@ import Foundation
 import Combine
 
 enum MosaicType: String, CaseIterable, Identifiable {
-    case pixellate = "ピクセレート"
-    case gaussianBlur = "ぼかし"
-    case crystallize = "クリスタライズ"
+    case pixellate
+    case gaussianBlur
+    case crystallize
 
     var id: String { rawValue }
+
+    var localizedName: String {
+        switch self {
+        case .pixellate: return NSLocalizedString("pixellate", comment: "")
+        case .gaussianBlur: return NSLocalizedString("blur", comment: "")
+        case .crystallize: return NSLocalizedString("crystallize", comment: "")
+        }
+    }
 }
 
 final class MosaicSettings: ObservableObject {
@@ -32,12 +40,19 @@ final class MosaicSettings: ObservableObject {
     }
 
     private init() {
-        let savedType = UserDefaults.standard.string(forKey: "mosaicType") ?? MosaicType.pixellate.rawValue
-        self.mosaicType = MosaicType(rawValue: savedType) ?? .pixellate
+        // rawValueが変更されたので旧値からのマイグレーション
+        let savedType = UserDefaults.standard.string(forKey: "mosaicType") ?? ""
+        switch savedType {
+        case "ピクセレート": self.mosaicType = .pixellate
+        case "ぼかし": self.mosaicType = .gaussianBlur
+        case "クリスタライズ": self.mosaicType = .crystallize
+        default: self.mosaicType = MosaicType(rawValue: savedType) ?? .pixellate
+        }
         let savedStrength = UserDefaults.standard.double(forKey: "mosaicStrength")
         self.strength = savedStrength > 0 ? savedStrength : 30
-        self.autoMosaicEnabled = UserDefaults.standard.bool(forKey: "autoMosaicEnabled")
-        let savedMinutes = UserDefaults.standard.double(forKey: "autoMosaicMinutes")
-        self.autoMosaicMinutes = savedMinutes > 0 ? savedMinutes : 5
+        let savedMinutes = UserDefaults.standard.object(forKey: "autoMosaicMinutes") != nil
+            ? UserDefaults.standard.double(forKey: "autoMosaicMinutes") : 0
+        self.autoMosaicMinutes = savedMinutes
+        self.autoMosaicEnabled = savedMinutes > 0
     }
 }
