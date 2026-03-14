@@ -15,6 +15,7 @@
 		A10000060000000000000006 /* MosaicOverlayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000060000000000000006; };
 		A10000070000000000000007 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000070000000000000007; };
 		A10000080000000000000008 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20000080000000000000008; };
+		A1000000000000000000000A /* ScreenRecordingPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000C; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		A20000080000000000000008 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A20000090000000000000009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2000000000000000000000A /* DisplayMosaic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DisplayMosaic.entitlements; sourceTree = "<group>"; };
+		A2000000000000000000000C /* ScreenRecordingPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenRecordingPermission.swift; sourceTree = "<group>"; };
 		A30000000000000000000001 /* DisplayMosaic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DisplayMosaic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -63,6 +65,7 @@
 				A20000080000000000000008 /* Assets.xcassets */,
 				A20000090000000000000009 /* Info.plist */,
 				A2000000000000000000000A /* DisplayMosaic.entitlements */,
+				A2000000000000000000000C /* ScreenRecordingPermission.swift */,
 			);
 			path = DisplayMosaic;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 				A10000050000000000000005 /* MosaicOverlayWindow.swift in Sources */,
 				A10000060000000000000006 /* MosaicOverlayManager.swift in Sources */,
 				A10000070000000000000007 /* SettingsView.swift in Sources */,
+				A1000000000000000000000A /* ScreenRecordingPermission.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

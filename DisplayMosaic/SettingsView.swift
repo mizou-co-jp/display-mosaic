@@ -1,8 +1,10 @@
 import SwiftUI
+import ServiceManagement
 
 struct SettingsView: View {
     @ObservedObject private var settings = MosaicSettings.shared
     @State private var isActive = MosaicOverlayManager.shared.isActive
+    @State private var launchAtLogin = SMAppService.mainApp.status == .enabled
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -83,6 +85,21 @@ struct SettingsView: View {
 
             Divider()
 
+            // ログイン時に起動
+            Toggle("ログイン時に自動起動", isOn: $launchAtLogin)
+                .font(.subheadline)
+                .onChange(of: launchAtLogin) { newValue in
+                    do {
+                        if newValue {
+                            try SMAppService.mainApp.register()
+                        } else {
+                            try SMAppService.mainApp.unregister()
+                        }
+                    } catch {
+                        launchAtLogin = SMAppService.mainApp.status == .enabled
+                    }
+                }
+
             // 終了ボタン
             HStack {
                 Spacer()
@@ -107,13 +124,11 @@ struct SettingsView: View {
         if isActive {
             MosaicOverlayManager.shared.deactivate()
         } else {
-            // ポップオーバーを閉じてからモザイクを有効化
             NSApp.windows.forEach { window in
                 if let popover = window as? NSPanel {
                     popover.orderOut(nil)
                 }
             }
-            // 少し待ってからキャプチャ（ポップオーバーが消えた後）
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 MosaicOverlayManager.shared.activate()
             }

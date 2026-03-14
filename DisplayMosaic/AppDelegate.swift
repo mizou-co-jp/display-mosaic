@@ -10,6 +10,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
         NSApp.setActivationPolicy(.accessory)
         setupStatusItem()
         setupPopover()
+        ScreenRecordingPermission.requestIfNeeded()
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
@@ -20,8 +21,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
 
         if let button = statusItem.button {
-            button.image = NSImage(systemSymbolName: "mosaic.fill", accessibilityDescription: "Display Mosaic")
-                ?? NSImage(systemSymbolName: "square.grid.3x3.fill", accessibilityDescription: "Display Mosaic")
+            if let icon = NSImage(named: "MenuBarIcon") {
+                icon.isTemplate = true
+                button.image = icon
+            } else {
+                button.image = NSImage(systemSymbolName: "square.grid.3x3.fill", accessibilityDescription: "Display Mosaic")
+            }
             button.action = #selector(togglePopover)
             button.target = self
         }

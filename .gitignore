@@ -13,3 +13,6 @@ xcuserdata/
 
 # Debug logs
 DisplayMosaic_debug.log
+
+# Source images
+grok-image-*.png
