@@ -8,7 +8,6 @@ struct SettingsView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            // ヘッダー
             HStack {
                 Text("Display Mosaic")
                     .font(.headline)
@@ -102,7 +101,7 @@ struct SettingsView: View {
                         .onChange(of: settings.autoMosaicMinutes) { newValue in
                             settings.autoMosaicEnabled = newValue > 0
                         }
-                    Text("30\(NSLocalizedString("minutes_format", comment: "").replacingOccurrences(of: "%d", with: "").trimmingCharacters(in: .whitespaces))")
+                    Text(String(format: NSLocalizedString("minutes_format", comment: ""), 30))
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -130,7 +129,6 @@ struct SettingsView: View {
                     }
                 }
 
-            // 終了ボタン
             HStack {
                 Spacer()
                 Button("quit") {
@@ -144,10 +142,8 @@ struct SettingsView: View {
         .padding(16)
         .frame(width: 280)
         .fixedSize(horizontal: false, vertical: true)
-        .onReceive(NotificationCenter.default.publisher(for: .mosaicStateDidChange)) { notification in
-            if let active = notification.userInfo?["isActive"] as? Bool {
-                isActive = active
-            }
+        .onReceive(MosaicOverlayManager.shared.$isActive) { active in
+            isActive = active
         }
     }
 
@@ -162,14 +158,7 @@ struct SettingsView: View {
         if isActive {
             MosaicOverlayManager.shared.deactivate()
         } else {
-            NSApp.windows.forEach { window in
-                if let popover = window as? NSPanel {
-                    popover.orderOut(nil)
-                }
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                MosaicOverlayManager.shared.activate()
-            }
+            MosaicOverlayManager.shared.activate()
         }
     }
 }

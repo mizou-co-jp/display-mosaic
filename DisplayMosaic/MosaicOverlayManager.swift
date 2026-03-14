@@ -1,19 +1,20 @@
 import AppKit
+import Combine
 
 /// 全画面モザイクオーバーレイの表示・非表示を管理する
 final class MosaicOverlayManager {
 
     static let shared = MosaicOverlayManager()
 
+    @Published private(set) var isActive = false
+
     private var overlayWindows: [MosaicOverlayWindow] = []
-    private var globalKeyMonitor: Any?
     private var localKeyMonitor: Any?
 
-    var isActive: Bool { !overlayWindows.isEmpty }
+    private static let escapeKeyCode: UInt16 = 53
 
     private init() {}
 
-    /// モザイクオーバーレイを全スクリーンに表示する
     func activate() {
         guard !isActive else { return }
 
@@ -32,15 +33,9 @@ final class MosaicOverlayManager {
         }
 
         startKeyMonitoring()
-
-        NotificationCenter.default.post(
-            name: .mosaicStateDidChange,
-            object: nil,
-            userInfo: ["isActive": true]
-        )
+        isActive = true
     }
 
-    /// モザイクオーバーレイを解除する
     func deactivate() {
         stopKeyMonitoring()
 
@@ -49,26 +44,16 @@ final class MosaicOverlayManager {
         }
         overlayWindows.removeAll()
 
-        NotificationCenter.default.post(
-            name: .mosaicStateDidChange,
-            object: nil,
-            userInfo: ["isActive": false]
-        )
+        isActive = false
     }
 
     private func startKeyMonitoring() {
         localKeyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
-            if event.keyCode == 53 { // Escape
+            if event.keyCode == Self.escapeKeyCode {
                 self?.deactivate()
                 return nil
             }
             return event
-        }
-
-        globalKeyMonitor = NSEvent.addGlobalMonitorForEvents(matching: .keyDown) { [weak self] event in
-            if event.keyCode == 53 {
-                self?.deactivate()
-            }
         }
     }
 
@@ -77,13 +62,5 @@ final class MosaicOverlayManager {
             NSEvent.removeMonitor(monitor)
             localKeyMonitor = nil
         }
-        if let monitor = globalKeyMonitor {
-            NSEvent.removeMonitor(monitor)
-            globalKeyMonitor = nil
-        }
     }
-}
-
-extension Notification.Name {
-    static let mosaicStateDidChange = Notification.Name("mosaicStateDidChange")
 }
