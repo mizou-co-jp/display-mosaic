@@ -135,6 +135,7 @@ struct SettingsView: View {
         }
         .padding(16)
         .frame(width: 280)
+        .fixedSize(horizontal: false, vertical: true)
         .onReceive(NotificationCenter.default.publisher(for: .mosaicStateDidChange)) { notification in
             if let active = notification.userInfo?["isActive"] as? Bool {
                 isActive = active
