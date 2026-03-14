@@ -5,12 +5,18 @@ set -euo pipefail
 # DisplayMosaic Release Script
 # Usage: ./scripts/release.sh <version>
 # Example: ./scripts/release.sh 1.0.2
+#
+# Required environment variables:
+#   APPLE_TEAM_ID          - Apple Developer Team ID
+#   NOTARIZE_API_KEY       - Path to App Store Connect API .p8 key file
+#   NOTARIZE_API_KEY_ID    - App Store Connect API Key ID
+#   NOTARIZE_API_ISSUER_ID - App Store Connect API Issuer ID
 # =============================================================================
 
 VERSION="${1:?Usage: $0 <version> (e.g. 1.0.2)}"
 APP_NAME="DisplayMosaic"
 BUNDLE_ID="jp.co.mizou.DisplayMosaic"
-TEAM_ID="REDACTED_TEAM_ID"
+TEAM_ID="${APPLE_TEAM_ID:?Set APPLE_TEAM_ID environment variable}"
 DEVELOPER_ID="Developer ID Application: MIZOU, CO., LTD. (${TEAM_ID})"
 
 BUILD_DIR="/tmp/${APP_NAME}Build"
@@ -53,9 +59,9 @@ ditto -c -k --keepParent "${APP_PATH}" "${ZIP_PATH}"
 # 4. Notarize
 echo "=== Submitting for notarization ==="
 
-API_KEY="${HOME}/.appstoreconnect/private_keys/AuthKey_REDACTED_KEY_ID.p8"
-API_KEY_ID="REDACTED_KEY_ID"
-API_ISSUER_ID="REDACTED_ISSUER_ID"
+API_KEY="${NOTARIZE_API_KEY:?Set NOTARIZE_API_KEY to path of .p8 file}"
+API_KEY_ID="${NOTARIZE_API_KEY_ID:?Set NOTARIZE_API_KEY_ID environment variable}"
+API_ISSUER_ID="${NOTARIZE_API_ISSUER_ID:?Set NOTARIZE_API_ISSUER_ID environment variable}"
 
 xcrun notarytool submit "${ZIP_PATH}" \
   --key "${API_KEY}" \
