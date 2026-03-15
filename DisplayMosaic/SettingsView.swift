@@ -69,14 +69,12 @@ struct SettingsView: View {
             .buttonStyle(.borderedProminent)
             .tint(isActive ? .red : .accentColor)
 
-            if isActive {
-                HStack {
-                    Spacer()
-                    Text("press_esc_to_dismiss")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    Spacer()
-                }
+            HStack {
+                Spacer()
+                Text("press_esc_to_dismiss")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Spacer()
             }
 
             Divider()
