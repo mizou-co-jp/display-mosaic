@@ -131,3 +131,4 @@ brew upgrade display-mosaic
 | 広告 | - 未導入 |
 | ATT | - 広告なしのため不要 |
 | レビューダイアログ | ❌ 未実装 |
+
