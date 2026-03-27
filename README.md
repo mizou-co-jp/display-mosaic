@@ -123,3 +123,11 @@ brew upgrade display-mosaic
 ## License
 
 [MIT](LICENSE)
+
+## Status
+
+| 項目 | 状態 |
+|------|------|
+| 広告 | - 未導入 |
+| ATT | - 広告なしのため不要 |
+| レビューダイアログ | ❌ 未実装 |
